@@ -1,6 +1,6 @@
 import Vue from './vue.esm.browser.js';
 
-const app = new Vue({
+export const app = new Vue({
   el: '#app',
 
   data: {
@@ -9,8 +9,7 @@ const app = new Vue({
 
   methods: {
     btnCounter: function() {
-      this.counter = this.counter
+      this.counter = this.counter + 1
     }
   }
 })
-// Рекомендуется использовать МЕТОД в качестве обработчика события

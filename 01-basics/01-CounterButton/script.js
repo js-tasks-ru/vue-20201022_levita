@@ -8,7 +8,7 @@ export const app = new Vue({
   },
 
   methods: {
-    btnCounter: function() {
+    btnCounter() {
       this.counter = this.counter + 1
     }
   }

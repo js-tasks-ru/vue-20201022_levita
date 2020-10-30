@@ -12,7 +12,7 @@ const MEETUP_ID = 6;
  * @return {string} - ссылка на изображение митапа
  */
 function getMeetupCoverLink(meetup) {
-  return `${API_URL}/images/${meetup.imageId}`;
+  return `${API_URL}/images/${meetup['imageId']}`;
 }
 
 /**
@@ -48,8 +48,8 @@ function fetchMeetup() {
   return fetch(`${API_URL}/meetups/${MEETUP_ID}`, {
     method: 'GET',
   })
-    .then(res => res.json())
-    .then(res => res)
+    .then((res) => res.json())
+    .then((res) => res);
 }
 
 
@@ -66,11 +66,11 @@ export const app = new Vue({
   },
 
   computed: {
-    meetup(){
-      if (this.rawMeetup){
+    meetup() {
+      if (this.rawMeetup) {
         return {
           ...this.rawMeetup,
-          cover: this.rawMeetup.imageId ? getMeetupCoverLink(this.rawMeetup) : '',
+          cover: !this.rawMeetup.imageId ? '' : getMeetupCoverLink(this.rawMeetup),
           localDate: new Date(this.rawMeetup.date).toLocaleString(
             navigator.language,
             {
@@ -81,21 +81,19 @@ export const app = new Vue({
           ),
           // dateTime: this
           date: new Date(this.rawMeetup.date),
-          agenda: this.rawMeetup.agenda.map(item => {
-            return {...item,
+          agenda: this.rawMeetup.agenda.map((item) => {
+            return {
+              ...item,
               title: item.title ?? agendaItemTitles[item.type],
-              icon: `icon-${agendaItemIcons[item.type]}`
+              icon: `icon-${agendaItemIcons[item.type]}`,
             };
-          })
-
+          }),
         };
       } else {
-        return null
+        return null;
       }
-
     },
   },
-
 
   methods: {
     async getMeetup() {

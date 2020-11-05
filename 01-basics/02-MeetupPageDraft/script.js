@@ -70,24 +70,24 @@ export const app = new Vue({
       if (this.rawMeetup) {
         return {
           ...this.rawMeetup,
-          cover: !this.rawMeetup.imageId ? '' : getMeetupCoverLink(this.rawMeetup),
-          localDate: new Date(this.rawMeetup.date).toLocaleString(
-            navigator.language,
-            {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            },
-          ),
+          // cover: !this.rawMeetup.imageId ? '' : getMeetupCoverLink(this.rawMeetup),
+          // localDate: new Date(this.rawMeetup.date).toLocaleString(
+          //   navigator.language,
+          //   {
+          //     year: 'numeric',
+          //     month: 'long',
+          //     day: 'numeric',
+          //   },
+          // ),
           // dateTime: this
-          date: new Date(this.rawMeetup.date),
-          agenda: this.rawMeetup.agenda.map((item) => {
-            return {
-              ...item,
-              title: item.title ?? agendaItemTitles[item.type],
-              icon: `icon-${agendaItemIcons[item.type]}`,
-            };
-          }),
+          // date: new Date(this.rawMeetup.date),
+          // agenda: this.rawMeetup.agenda.map((item) => {
+          //   return {
+          //     ...item,
+          //     title: item.title ?? agendaItemTitles[item.type],
+          //     icon: `icon-${agendaItemIcons[item.type]}`,
+          //   };
+          // }),
         };
       } else {
         return null;

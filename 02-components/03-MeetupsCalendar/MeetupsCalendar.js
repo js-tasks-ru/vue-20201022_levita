@@ -1,11 +1,6 @@
 /*
   Полезные функции по работе с датой можно описать вне Vue компонента
  */
-function ActualMonth() {
-  let date = new Date();
-  date.day
-  return date
-}
 
 export const MeetupsCalendar = {
   name: 'MeetupsCalendar',
